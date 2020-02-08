@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>復習</title>
+    <script>
+    // 消費税を計算する関数を書いてください　showTax
+    // 1. 100円に消費税10%を加える計算をしてください。console.logで結果を表示してください。
+    // 2. showTaxに引数と追加してください。引数で飛んできた金額に消費税をかけてください。
+    // 3. 2000円以上の金額の場合はもとの金額を5%オフにして、消費税をかけてください。
+    // 4. 戻り値（return）を使います。1000円と3000円の税込み金額を求めてください。
+    
+    // 1
+    // function showTax() {
+    //     var price = 100;
+    //     var taxPrice = Math.floor(price * 1.1);
+    //     console.log('税込み金額は'+taxPrice+'円です。');    
+    // }
+    // showTax();
+
+    // 2. showTaxに引数と追加してください。引数で飛んできた金額に消費税をかけてください。
+    // function showTax(price) {
+    //     // var price = 100;
+    //     var taxPrice = Math.floor(price * 1.1);
+    //     console.log('税込み金額は'+taxPrice+'円です。');    
+    // }
+    // showTax(2000);
+    // showTax(5000);
+
+    // 3. 2000円以上の金額の場合はもとの金額を5%オフにして、消費税をかけてください。
+    // function showTax(price) {
+    //     // もしpriceが2000円以上だったら、priceに0.95をかける
+    //     // それ以外は何もしない
+    //     if(price >= 2000){
+    //         var afterPrice = price * 0.95;
+    //     } else {
+    //         var afterPrice = price;
+    //     }
+    //     // 消費税をかける
+    //     var taxPrice = Math.floor(afterPrice * 1.1);
+    //     console.log('税込み金額は'+taxPrice+'円です。');    
+    // }
+    // showTax(1000);
+    // showTax(2000);
+
+    // 4. 戻り値（return）を使います。1000円と3000円の税込み金額の合計を求めてください。
+    function showTax(price) {
+        // もしpriceが2000円以上だったら、priceに0.95をかける
+        // それ以外は何もしない
+        if(price >= 2000){
+            var afterPrice = price * 0.95;
+        } else {
+            var afterPrice = price;
+        }
+        // 消費税をかける
+        var taxPrice = Math.floor(afterPrice * 1.1);
+        console.log('税込み金額は'+taxPrice+'円です。'); 
+        return taxPrice;   
+    }
+
+    // 合計金額を計算する
+    var totalPrice = showTax(1000) + showTax(3000);
+    console.log('合計金額は'+totalPrice+'です。');
+    
+    
+    
+
+
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

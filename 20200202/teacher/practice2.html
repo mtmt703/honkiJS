@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>練習</title>
+    <script>
+        // お題：動物園の入場料を計算してください
+        /*
+            金額設定は以下のような感じです。
+            6歳以下　無料
+            12歳以下 300円
+            成人 600円
+            65歳以上　400円
+        */
+        // 1. function showPriceを使ってそれぞれの入場料を出力してください。for, 配列を使ってください。
+        //      1-1. function showPriceを書く
+        //      1-2. showPriceに引数を渡す(例：3歳)
+        //      1-3. 引数をもとにif文でお金を計算
+        //      1-4. 入場料をconsole.logに表示
+        //      1-5. forでmemberの分だけ呼び出しを実行  
+        //      1-6. 配列から年齢をひっぱってくる
+        //      1-7. 配列が増えたら自動的に計算人数も増える
+
+        // 2. メンバー全員の合計金額を出してください。
+        // 3. もしメンバーが5人以上だったら、全体金額を10%オフにしてください。
+
+        // ============================
+        // Bさん　受付
+        function showPrice(age) {
+            if(age <= 6) {
+                // 6歳以下
+                var price = 0;
+            } else if(age <=12) {
+                // 12歳以下
+                var price = 300;
+            } else if(age >= 65) {
+                // 65歳以上
+                var price = 400;
+            } else {
+                // その他（成人）
+                var price = 600;
+            }
+            //console.log(age+'歳の金額は'+price+'円です。');
+            return price;
+        }
+
+        // =================================
+        // Aさん　入場者
+        var totalPrice = 0;
+        // メンバーの年齢
+        var member = [3, 10, 20, 70];   
+        for(var i=0; i<member.length; i++) {
+            //console.log(showPrice(member[i]));
+            totalPrice = totalPrice + showPrice(member[i]);   
+        }
+        // 合計金額を表示
+        console.log('合計金額は'+totalPrice+'円です');
+        
+
+        
+
+
+
+  
+
+
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

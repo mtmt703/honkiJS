@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>練習</title>
+    <script>
+
+        // 1. function showPriceを使ってそれぞれの入場料を出力してください。for, 配列を使ってください。
+        //      1-1. function showPriceを書く
+        //      1-2. showPriceに引数を渡す(例：3歳)
+        //      1-3. 引数をもとにif文でお金を計算
+        //      1-4. 入場料をconsole.logに表示
+        //      1-5. forでmemberの分だけ呼び出しを実行
+        //      1-6. 配列から年齢をひっぱってくる
+        // 2. メンバー全員の合計金額を出してください。
+        // 3. もしメンバーが5人以上だったら、全体金額を10%オフにしてください。
+
+        /*
+            金額設定は以下のような感じです。
+            6歳以下　　無料
+            12歳以下　300円
+            成人　　　600円
+            65歳以上　400円
+        */
+
+
+        // メンバーの年齢
+        var member = [3, 10, 20, 70];
+
+        function showPrice(age){
+            // var age = 65;
+            console.log(age);
+
+            if(age <=6){
+                var price = 0;
+            } else if(age>=6 && age<=12){
+                var price = 300;
+            } else if(age>=12 && age<=64){
+                var price = 600;
+            } else{
+                var price = 400;
+            }
+            
+        }
+
+
+        var totalPrice = 0;
+
+
+        var member = [3, 10, 20, 70];
+
+        for(var i =0; i>4; i++){
+
+            totalPrice
+
+        }
+
+        showPrice(30);
+       
+        
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

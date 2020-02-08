@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>グローバル変数</title>
+    <script>
+        // 変数
+        //      ローカル変数
+        //      グローバル変数
+        //      定数
+
+        // グローバル変数
+        var a = 0;
+        
+        // このサイトでブログを表示させる数（定数）
+        var BLOG_NUM = 10;
+
+
+        function showBlog() {
+            for(var i=0; i<BLOG_NUM; i++) {
+                // HTMLにブログを表示
+            }
+        }
+
+
+
+        function test() {
+            // グローバル変数
+            a = 5;
+            console.log('testを実行'+a);
+        }
+        test();
+        console.log(a);
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

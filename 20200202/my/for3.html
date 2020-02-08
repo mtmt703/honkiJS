@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for</title>
+    <script>
+        for(var i=0; i<100; i++){
+            
+            console.log(i);
+
+            // 3と5の倍数だったら＠＠＠を入れる
+            // 3の倍数だったら、----を入れる
+            // 5の倍数だったら、＝＝＝を入れる
+
+            if(i % 3 ===0 && i % 5 ===0){
+                console.log('@@@');     
+            } else if(i % 3 === 0){
+                console.log('___');
+            } else if(i % 5 ===0){
+                console.log('===');  
+            }  
+
+        }
+        // 　forを囲っている最後の｝のあとの；（セミコロン）はなくてもOK！
+
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

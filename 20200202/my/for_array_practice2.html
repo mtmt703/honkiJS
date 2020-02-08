@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>配列</title>
+    <script>
+        function showTax(price){
+            // 整数表示にする
+            var taxPrice = Math.floor(price * 1.1);
+            console.log('税込金額は'+taxPrice+'円です');  
+        }
+
+        // 商品の値段の配列
+        var priceList = [300,500,1000,3000,5000];
+
+        // 上記のpriceListの金額を使って、消費税計算をしてください。
+        // forを使ってshowTaxは1回のみ記述してください。
+
+        // 1.forを使って3回ループさせてください
+        // 2.forの中でshowTax（）を実行してください。
+        // 3.showTaxの引数の値を配列から引っ張ってください
+
+        for(var i =0; i<priceList.length; i++){
+            // console.log(i);
+            console.log(priceList[i]);           
+
+            // 3.showTaxの引数の値を配列から引っ張ってください　1回目のループで300　2回めのループで500　3回目のループで1000円（税込み）が表示される。
+            showTax(priceList[i]);
+            // showTax(300);
+        } 
+
+        // 配列　forループ　足し算
+        
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
