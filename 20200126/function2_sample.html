@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScriptの練習</title>
+    <script>
+        function showTax() {
+            // 商品の値段を設定
+            var price = 100;
+            // 商品(price)が3000円（税抜）以上であれば5%オフにする
+            if(price >= 3000){
+                var afterPrice = price * 0.95;
+            } else {
+                var afterPrice = price;
+            }
+
+            // 税込みの値段を設定
+            var taxPrice = Math.floor(afterPrice * 1.1);
+            // 税込みの値段を表示
+            console.log('商品の値段は'+afterPrice+'です');
+            console.log('税込みの値段は'+taxPrice+'です');
+        }
+
+        // functionの実行
+        showTax();
+    </script>
+</head>
+<body>
+    こんにちは
+    
+</body>
+</html>

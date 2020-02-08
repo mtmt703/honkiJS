@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScriptの練習</title>
+    <script>
+        // 消費税計算のfunctionをつくる
+        // 消費税率は８％
+        // showTaxに汎用性をもたせる　固定値を中に入れない　外から 外の値をカッコのなかで受け取る＝引数　好きな名前をつけられる priceという箱ができた ()の中で定義している　引数の中は変数しか入れられない　複数入れられる
+
+        function showTax(price){
+            // var price = 100;
+            var taxPrice = price * 1.1;
+            // console.log(taxPrice);
+            console.log('商品の値段は'+price+'です');
+            console.log('税込みの値段は'+taxPrice+'です');  
+            console.log('------');
+            // 税込み金額を呼び出し元に返す もう一度使いたい時にreturnを使う
+            return taxPrice;
+            
+        }
+
+        // functionの実行　ボタンのようなもの
+        showTax(100);
+        showTax(200);
+
+        // 合計金額を表示
+        var totalPrice = showTax(100)+showTax(200);
+        console.log('合計金額は'+totalPrice);
+        
+
+
+
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>
+
