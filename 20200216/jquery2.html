@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+</head>
+<body>
+    <p class="last-name">松村</p>
+    <p class="first-name">慎</p>
+    <div id="output"></div>
+    
+    <script>
+        // 名字を取得
+        var lastName = $('.last-name').text();
+        console.log(lastName);
+        // 名前を取得
+        var firstName = $('.first-name').text();
+        // id:outputに表示
+        $('#output').text(lastName+firstName);
+
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+    p {
+        color:blue;
+    }
+    </style>
+    
+    
+</head>
+<body>
+    <div></div>
+    <p></p>
+    
+    <script>
+        // divタグに対してテキスト（こんにちは）を挿入する
+        $('div').text('こんにちは');
+        // pタグに対してHTMLを挿入する
+        $('p').html('<b>こんばんは</b>');
+        // pタグに対して文字を赤色にする
+        $('p').css('color', 'red');
+
+        // divタグからテキストを取得する
+        var txt = $('div').text();
+        console.log(txt);
+        // pタグからHTMLタグを取得する。console.logに表示
+        var h = $('p').html();
+        console.log(h);
+        // pタグcssのcolorを取得する。console.logに表示
+        var c = $('p').css('color');
+        console.log(c);
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+    .global-menu li:nth-child(2) {
+        color:red;
+    }
+
+    </style>
+    
+</head>
+<body>
+    <nav class="name">
+        <li>松村</li>
+        <li>伊藤</li>
+        <li>松本</li>
+    </nav>
+    <nav class="birth">
+        <li>兵庫</li>
+        <li>福島</li>
+        <li>栃木</li>
+    </nav>
+    <nav class="output">
+        <li></li>
+        <li></li>
+        <li></li>
+    </nav>
+
+    <script>
+        var len = $('.name li').length;
+
+        for(var i=0; i<len; i++) {
+            // outputに以下のように表示してください。
+            // 松村さんは兵庫県出身です。
+            var name = $('.name li').eq(i).text();
+            var birth = $('.birth li').eq(i).text();
+            $('.output li').eq(i).text(name+'さんは'+birth+'県出身です。');
+        }
+
+        // // 伊藤さんは福島県出身です。
+        // var name2 = $('.name li').eq(1).text();
+        // var birth2 = $('.birth li').eq(1).text();
+        // $('.output li').eq(1).text(name2+'さんは'+birth2+'県出身です。');
+
+        // // 松本さんは栃木県出身です。
+        // var name3 = $('.name li').eq(2).text();
+        // var birth3 = $('.birth li').eq(2).text();
+        // $('.output li').eq(2).text(name3+'さんは'+birth3+'県出身です。');
+
+
+       
+    </script>
+</body>
+</html>

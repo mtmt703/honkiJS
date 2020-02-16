@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+    .global-menu li:nth-child(2) {
+        color:red;
+    }
+
+    </style>
+    
+</head>
+<body>
+    <input type="text" class="price">
+    <button class="btn-calc">計算</button>
+    <button class="btn-reset">リセット</button>
+
+    <div class="output"></div>
+    <div class="comment"></div>
+
+    <script>
+        /*
+        1. priceに金額を入力します
+        2. 計算ボタンを押すと税込み金額をoutputに表示します
+        3. リセットボタンを押すとpriceとoutputの数字を消します
+        ------
+        4. 税抜金額が2000円以上だと10%オフになります。
+        5. outputの文字が赤色になります。
+        ------
+        6. commentに「全体で◯◯円安くなりました！」と出る
+        */
+
+        // 金額を取得する
+        //var p = $('.price').val(); 
+
+        // 金額を消す
+        //$('.price').val(''); 
+
+        
+        // 計算ボタンがおされたかどうかを書く
+        $('.btn-calc').on('click', function(){
+            console.log('ボタンがおされました');
+            // 金額を取得する
+            var originalPrice = $('.price').val(); 
+            // もしのoriginalPrice値が2000以上だったら、originalPriceに0.9をかける
+            if(originalPrice >= 2000) {
+                var discountPrice = originalPrice * 0.9;
+                // 赤文字にする
+                $('.output').css('color', 'red');
+            } else {
+                var discountPrice = originalPrice;
+                // 黒文字
+                $('.output').css('color', 'black');
+            }
+            // originalPriceに消費税をかける
+            var taxPrice = discountPrice * 1.1;
+            console.log(taxPrice);
+            // outputに表示する
+            $('.output').text(taxPrice);
+        });
+
+        // リセットボタン
+        $('.btn-reset').on('click', function(){
+            // priceを空にする
+            $('.price').val('');
+            // outputを空にする
+            $('.output').text('');
+
+        });
+            
+
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+    .global-menu li:nth-child(2) {
+        color:red;
+    }
+
+    </style>
+    
+</head>
+<body>
+    <nav class="name">
+        <li>松村</li>
+        <li>伊藤</li>
+        <li>松本</li>
+    </nav>
+    <nav class="birth">
+        <li>兵庫</li>
+        <li>福島</li>
+        <li>栃木</li>
+    </nav>
+    <nav class="output">
+        <li></li>
+        <li></li>
+        <li></li>
+    </nav>
+    <button class="btn1">ボタン1</button>
+    <button class="btn2">ボタン2</button>
+
+
+    <script>
+        // ボタンの記述
+        $('.btn1').on('click', function(){
+            console.log('ボタンがおされました。');
+            var name = $('.name li').eq(0).text();
+            var birth = $('.birth li').eq(0).text();
+            $('.output li').eq(0).text(name+'さんは'+birth+'県出身です。');
+        });
+
+        // ボタン2がおされたら伊藤さんの名前を表示してください
+
+
+
+
+
+        // function test() {
+        //     console.log('ボタンがおされました。');
+            
+        // }
+        
+       
+    </script>
+</body>
+</html>

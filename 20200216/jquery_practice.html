@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQueryの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+</head>
+<body>
+    <div>松村</div>
+    <p>慎</p>
+    <section></section>
+    
+    <script>
+        // 1. sectionタグに「わたしの名前は松村 慎です。」と表示してください
+            // divタグからテキストを取得
+            var lastName = $('div').text();
+            console.log(lastName);
+            // pタグからテキストを取得
+            var firstName = $('p').text();
+            // divとpのテキストを結合
+            var fullName = lastName + ' ' + firstName;
+            // sectionタグに「わたしの名前は」+テキスト+「です。」と表示
+            $('section').text('わたしの名前は'+fullName+'です。');
+
+        // 2. 「松村 慎」を赤文字にしてください。
+            // divタグからテキストを取得
+            var lastName = $('div').text();
+            console.log(lastName);
+            // pタグからテキストを取得
+            var firstName = $('p').text();
+            // divとpのテキストを結合。divとpのテキストを結合+spanタグで囲む
+            var fullName = '<span>' + lastName + ' ' + firstName + '</span>';
+            // sectionタグに「わたしの名前は」+テキスト+「です。」と表示
+            $('section').html('わたしの名前は'+fullName+'です。');
+            // spanタグにcssの赤色を適用
+            $('span').css('color', 'red');
+
+    </script>
+</body>
+</html>
