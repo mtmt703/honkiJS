@@ -1,0 +1,38 @@
+header{
+    width: 800px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+main{
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+    width: 800px;
+    border: 1px solid black;
+}
+
+.memo-list{
+    width: 200px;
+}
+
+.memo-list li{
+    height: 50px;
+    border: 1px solid black;
+}
+
+.memo-list a{
+    display: block;
+    line-height: 50px;
+    text-align: center;
+}
+
+.memo-list a:hover{
+    background-color: #999;
+}
+
+/* メモ詳細 */
+.memo-detail{
+    width: 450px;
+    height: 300px;
+}
