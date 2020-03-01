@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローカルストレージの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        // htmlが読み込まれたら実行する
+        // $(function(){
+        // });　でもOK
+        $(document).ready(function(){
+            // ローカルストレージから値を取得する
+            var titleFromLS = localStorage.getItem('title');
+            // outputに表示
+            $('.output').text(titleFromLS);
+            // リロードしてもデータを読み込んで再構築して残っている
+
+
+
+
+
+            // 追加ボタンがおされたら
+            $('.add-btn').on('click',function(){
+                // input-titleから値を取得する
+                // $('.input-title').val();
+                // console.log('値が取れた');
+
+                var titleFromInput = $('.input-title').val();
+                console.log(titleFromInput);
+
+                // outputに出力する
+                $('.output').text(titleFromInput);
+
+                // localstrageに保存する
+                localStorage.setItem('title',titleFromInput);
+                  
+            });
+
+            // 再表示ボタンが押されたら
+            $('.display-btn').on('click',function(){
+                // ローカルストレージから値（key）を取得する
+                var titleFromLS = localStorage.getItem('title');
+                // outputに表示
+                $('.output').text(titleFromLS);
+
+            });
+
+            
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <!-- 入力部分 -->
+    <div>
+        <input type="text" class="input-title">
+        <button class="add-btn">追加</button>
+        <button class="display-btn">再表示</button>
+    </div>
+
+    <!-- 出力部分 -->
+    <div class="output">
+
+    </div>
+    
+</body>
+</html>

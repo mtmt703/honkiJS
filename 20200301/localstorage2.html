@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローカルストレージの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        // htmlが読み込まれたら実行する
+        // $(function(){
+        // });　でもOK
+        $(document).ready(function(){
+            // リロードしたらすぐに実行
+            // ローカルストレージから値（key）を取得する
+            var arrStr = localStorage.getItem('memoApp');
+
+            // 文字列から配列に変換　parse：解析
+            var arr = JSON.parse(arrStr);
+
+            // outputに表示する
+            $('.output').append('<p>' + arr[0] + '</p>');
+            $('.output').append('<p>' + arr[1] + '</p>');
+
+           
+            // 追加ボタンがおされたら
+            $('.add-btn').on('click',function(){
+                // input-titleから値を取得する
+                // $('.input-title').val();
+                // console.log('値が取れた');
+
+                var titleFromInput = $('.input-title').val();
+                // console.log(titleFromInput);
+                // input-memoから値を取得する
+                var memoFromInput = $('.input-memo').val();
+
+                // outputに表示する
+                $('.output').append('<p>' + titleFromInput + '</p>');
+                $('.output').append('<p>' + memoFromInput + '</p>');
+
+                // 配列に２つの情報を保存する
+                var arr = [titleFromInput, memoFromInput];
+
+                // 配列を文字にする 配列の構造体を文字列にする　stringify：文字にする
+                var arrStr = JSON.stringify(arr);
+
+                // ローカルストレージに保存する arrStrをmemoAppという名前で文字列として保存する。
+                // JSじゃないものはそちらの仕様に変更してあげないといけない　Node.jsはサーバーサイドもJSだから変換しなくて良い。ローカルストレージはJSじゃない。
+                localStorage.setItem('memoApp',arrStr);
+                
+            });
+
+            // 再表示ボタンが押されたら
+            $('.display-btn').on('click',function(){
+                // ローカルストレージから値（key）を取得する
+                var arrStr = localStorage.getItem('memoApp');
+
+                // 文字列から配列に変換
+                var arr = JSON.parse(arrStr);
+
+                // outputに表示する
+                $('.output').append('<p>' + arr[0] + '</p>');
+                $('.output').append('<p>' + arr[1] + '</p>');
+
+            });
+
+            
+
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <!-- 入力部分 -->
+    <div>
+        <input type="text" class="input-title">
+        <input type="text" class="input-memo">
+
+        <button class="add-btn">追加</button>
+        <button class="display-btn">再表示</button>
+    </div>
+
+    <!-- 出力部分 -->
+    <div class="output">
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ローカルストレージの練習</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        // htmlが読み込まれたら実行する
+        // $(function(){
+        // });　でもOK
+
+        var arr = [];
+        $(document).ready(function(){
+            var arrStr = localStorage.getItem('memoApp');
+        // リロードしても消えないようにここに持ってくる
+
+        // 文字列から配列に変換
+        // var arr = JSON.parse(arrStr);
+
+        // これをグローバル変数にしてあげれば、再表示しても４だけ単体ではなく１２３４と表示される
+        arr = JSON.parse(arrStr);
+        console.log(arrStr);
+
+        // outputに表示する
+        // $('.output').append('<p>' + arr[0] + '</p>');
+        // $('.output').append('<p>' + arr[1] + '</p>');
+
+        // var title0 = arr[0]; 
+        // var liTag = '<li>'+title0+'</li>';
+        // $('.output').append(liTag);
+
+        // var title1 = arr[1];
+        // var liTag = '<li>'+title1+'</li>';
+        // $('.output').append(liTag);
+
+        // var title2 = arr[2];
+        // var liTag = '<li>'+title2+'</li>';
+        // $('.output').append(liTag);
+
+        // ↑これらをforループを使って表示する
+
+        for(var i=0; i< arr.length; i++){
+            // 配列の長さ　arr.length
+            // console.log(i);
+            
+            var title0 = arr[i]; 
+            var liTag = '<li>'+title0+'</li>';
+            $('.output').append(liTag);
+
+        }
+           
+            // 追加ボタンがおされたら
+            $('.add-btn').on('click',function(){
+               
+                var titleFromInput = $('.input-title').val();
+                
+                // outputに表示する
+                $('.output').append('<li>' + titleFromInput + '</li>');
+
+                /*グローバルな配列にタイトルを追加 
+                push：一番最後に配列を追加
+                これがローカル変数だと１回１回消えてしまうので増えない！
+                */
+                arr.push(titleFromInput);
+                // consoleに１個１個配列が増えているのがわかる。
+                console.log(arr);
+
+                // 配列を文字列にする
+                var arrStr = JSON.stringify(arr);
+
+                /*　ローカルストレージに保存
+                arrStyをmemoAppという名前で保存
+                */
+                localStorage.setItem('memoApp', arrStr);
+                
+               
+                
+            });
+
+            // 再表示ボタンが押されたら
+            $('.display-btn').on('click',function(){
+                // ローカルストレージから値（key）を取得する
+                var arrStr = localStorage.getItem('memoApp');
+
+                // 文字列から配列に変換
+                // var arr = JSON.parse(arrStr);
+
+                // これをグローバル変数にしてあげれば、再表示しても４だけ単体ではなく１２３４と表示される
+                arr = JSON.parse(arrStr);
+                console.log(arrStr);
+                
+                // outputに表示する
+                // $('.output').append('<p>' + arr[0] + '</p>');
+                // $('.output').append('<p>' + arr[1] + '</p>');
+
+                // var title0 = arr[0]; 
+                // var liTag = '<li>'+title0+'</li>';
+                // $('.output').append(liTag);
+
+                // var title1 = arr[1];
+                // var liTag = '<li>'+title1+'</li>';
+                // $('.output').append(liTag);
+
+                // var title2 = arr[2];
+                // var liTag = '<li>'+title2+'</li>';
+                // $('.output').append(liTag);
+
+                // ↑これらをforループを使って表示する
+
+                for(var i=0; i< arr.length; i++){
+                    // 配列の長さ　arr.length
+                    // console.log(i);
+                    
+                    var title0 = arr[i]; 
+                    var liTag = '<li>'+title0+'</li>';
+                    $('.output').append(liTag);
+
+                }
+
+                // for(var i=0; i<3; i++){
+                //     // console.log(i);
+                    
+                //     var title0 = arr[0]; 
+                //     var liTag = '<li>'+title0+'</li>';
+                //     $('.output').append(liTag);
+
+                // }
+
+                
+
+                
+
+            });
+
+  
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <!-- 入力部分 -->
+    <div>
+        <input type="text" class="input-title">
+        <!-- <input type="text" class="input-memo"> -->
+
+        <button class="add-btn">追加</button>
+        <button class="display-btn">再表示</button>
+    </div>
+
+    <!-- 出力部分 -->
+    <ul class="output">
+
+    </ul>
+    
+</body>
+</html>
+
+<!-- 複数の記事を一度にローカルストレージに保存する -->
