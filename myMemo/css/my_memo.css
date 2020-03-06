@@ -6,6 +6,7 @@
         background: linear-gradient(#f3e2ff 0%, #ffcce6 100%);
         overflow: hidden;
         box-sizing: border-box;
+        font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック",sans-serif;
     }
 
     .icon_box{
