@@ -22,7 +22,7 @@
 
     .tab{
         display: flex;
-        border-bottom: 2px solid #C4C3C3;
+        border-bottom: 3px solid #C4C3C3;
         margin: 0 0 2rem;
         color: #707070;        
     }
@@ -33,7 +33,7 @@
     }
 
     .tab li:first-child{
-        border-bottom: 2px solid #707070;
+        border-bottom: 3px solid #707070;
         /* margin-right: 40px; */
     }
     
