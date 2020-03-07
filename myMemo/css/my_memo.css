@@ -22,7 +22,7 @@
 
     .tab{
         display: flex;
-        border-bottom: 3px solid #C4C3C3;
+        border-bottom: 2px solid #C4C3C3;
         margin: 0 0 2rem;
         color: #707070;        
     }
