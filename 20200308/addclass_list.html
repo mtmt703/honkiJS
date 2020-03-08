@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addClassの練習</title>
+    <style>
+        .memo-list{
+            width: 200px;
+        }
+
+        .memo-list li{
+            list-style: none;
+        }
+
+        .memo-list li a{
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid black;
+            text-decoration: none;
+            transition: 1s all;
+        }
+
+        .memo-list li a.active{
+            /* 変化させることはすべてCSSで記載して命令だけjsで行う */
+            background-color: #ddd;
+            line-height: 70px;
+        }
+        
+
+    </style>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        // クリックしたら背景グレーにする
+        $(function(){
+           $('.memo-list li a').on('click',function(){
+               //    console.log('clickされたよ');
+               // こうすると何がthisとして押されているかわかる！
+               console.log(this);
+               
+               //最初に１回全部のタグを白にする
+               $('.memo-list li a').removeClass('active');
+           
+               // ａタグの背景をグレーにする　自分自身 aにしちゃうと全部のaがグレーになっちゃう
+               $(this).addClass('active');
+
+           });
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <ul class="memo-list">
+        <!-- <li><a href="#" class="active">メモ1</a></li> このように実装したい-->
+        <li><a href="#">メモ1</a></li>
+        <li><a href="#">メモ2</a></li>
+        <li><a href="#">メモ3</a></li>
+        <li><a href="#">メモ4</a></li>
+    </ul>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objectの練習</title>
+    
+    <script>
+        
+        var memo0 = {category:'仕事', text:'タスク１', date:'2020/03/08', temp:'晴れ',isFinished:true};
+
+        // 流れ：memoListをローカルストレージに保存していく
+        var memoList = [memo0];
+
+        // 配列を文字列に変更
+        var memoListStr = JSON.stringify(memoList);
+
+        // ローカルストレージに保存
+        localStorage.setItem('memoApp', memoListStr);
+
+
+        console.log(memoList);
+
+  
+
+    </script>
+</head>
+<body>
+   
+
+</body>
+</html>

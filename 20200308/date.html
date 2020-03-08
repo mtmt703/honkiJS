@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dateの練習</title>  
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+
+            var dayList =['日','月','火','水','木','金','土'];
+
+            // add-btn
+            $('.add-btn').on('click',function(){
+                
+                // titleを取得
+                var title = $('.input-title').val();
+
+                // この瞬間の日付を取得したい（メモが追加されたときの日付）Date＝オブジェクト
+                var today = new Date();
+                console.log(today);
+
+                // today:オブジェクト getFullYear:関数 を呼び出している
+                var year = today.getFullYear();
+                console.log(year);
+
+                // 配列の２番めだから１を足す ['january','Feburary']
+                var month = today.getMonth()+1;
+                console.log(month);
+
+                var date = today.getDate();
+                console.log(date);
+
+                // 時間
+                var hours = today.getHours();
+                console.log(hours);
+                
+                // 分
+                var minutes = today.getMinutes();
+                console.log(minutes);         
+
+                // 秒
+                var seconds = today.getSeconds();
+                console.log(seconds);
+
+                // 曜日
+                var day = today.getDay();
+                // ０からの番号になっている
+                console.log(day);
+                
+                var todayDisplay =  year +'年'
+                                    +month+'月' 
+                                    +date+'日'
+                                    // +'('+dayList[0]')'
+                                    +'('+dayList[day]+')'
+                                    +hours 
+                                    +'時'
+                                    +minutes
+                                    +'分'
+                                    +seconds
+                                    +'秒';
+                                              
+
+                // タグを生成
+                // var liTag = '<li><a href ="#">'+ title +'</a></li>';
+                var liTag = '<li><a href ="#">'+ title+'<br>'+todayDisplay+'</a></li>';
+
+
+                // memo-listに追加
+                $('.memo-list').append(liTag);
+
+
+            });
+
+        });
+        
+      
+
+  
+
+    </script>
+
+</head>
+<body>
+   <input type="text" class="input-title">
+   <button class="add-btn">追加</button>
+   <br>
+   <ul class="memo-list">
+       <!-- <li></li> -->
+   </ul>
+
+</body>
+</html>

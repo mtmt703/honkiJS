@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addClassの練習</title>
+    <style>
+        .output{
+            width: 200px;
+            height: 200px;
+            background-color:red;
+            /*アニメーションは表示したい方に入れる　removeのとき取れてしまうから */
+            transition: 1s all;
+        }
+
+        .big{
+            width: 400px;
+            height: 600px;
+        }
+
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+
+            $('.add-btn').on('click',function(){
+                console.log('add-btnがおされたよ');
+                // $('.output').css('width','400px');
+
+                // クラス名をつける、という意味なので「．」は不要 
+                // addClassは、class名をjsで追加している
+                $('.output').addClass('big');
+   
+            });
+
+            $('.remove-btn').on('click',function(){
+                console.log('remove-btnがおされたよ');
+                // $('.output').css('width','200px');
+
+                $('.output').removeClass('big');
+
+                });
+        });
+
+
+
+    </script>
+</head>
+<body>
+    <button class="add-btn">Add Class</button>
+    <button class="remove-btn">Remove Class</button>
+    <br>
+    <div class="output">結果表示</div>
+
+
+</body>
+</html>
