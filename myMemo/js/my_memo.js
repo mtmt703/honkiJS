@@ -1,100 +1,206 @@
-// グローバル変数を定義　箱だけ作る
-var listNum;
+// グローバル変数はここに書くほうが◎
+var listNum = -1;
+var arr =[];
 
-// ready();
-$(document).ready(function(){
-    // inputボタンが押されたら
-    $('.input-btn').on('click',function(){
-        console.log('.input-btnがおされたよ');
+$(function(){
+    loadList();
 
-        // input-titleの内容をconsole.logに表示
-        var title = $('.input-title').val();
-        console.log(title);
-        
-        // 表示するHTMLタグの作成
-        // var tag = '<li><a href="#">メモ１</a></li>';
-        var tag = '<li><a href="#">' + title + '</a></li>';
-        // タグをメモリストに追加
-        $('.memo-list').append(tag);
-        
-    });
+    // .titleにフォーカスがあたったら　イベントを書く
 
-    // memo-listのliのaがクリックされたら　★これは現在存在していないからconsoleに存在しない
-    // $('.memo-list li a').on('click',function(){
-    //     console.log('aがクリックされました。');
-        
-    // });
-    // memo-listがクリックされたら、li　aに伝えて、functionを実行してね、という意味
-    $('.memo-list').on('click','li a',function(){
-        // console.log('aがクリックされました。');
+        // フォーカスがあたっている.titleが空白であれば新規
+        // listNum = -1;
 
-        // console.log(this);
-        // おされたタグ（this）から中身のタイトルを取り出す
-        var title = $(this).text();
-        console.log(title);
+        // それ以外は編集
+        // listNum = フォーカスがあたっているリストの番号
 
-        // memo-detailに表示 textareaの値を取りたいときはvalを使う
-        $('.memo-detail').val(title);
 
-        // 押されたリストの番号を変数に保存する　ローカル変数
-        listNum = $('.memo-list li').index($(this).parent());
-        console.log(listNum +'が押されました');
-        
-    });
 
-    // 編集ボタンがクリックされたら
-    $('.edit-btn').on('click',function(){
-        console.log('現在選択されているリストの番号は'+listNum);
+    // エンターキーが押されたらテキストを保存する
+    $('.task-list').keypress('.title',function(key){
+        // console.log('keypress');
+        // console.log(key.which);
 
-        if(listNum != -1){
-            // .memo-detailのテキストを取得する
-        var newTitle = $('.memo-detail').val();
-        console.log(newTitle);
-        
-        // .memo-listに反映する
-        // $('.memo-list li a').text(newTitle);
-        // $('.memo-list li').eq(0).find('a').text(newTitle);
-        $('.memo-list li').eq(listNum).find('a').text(newTitle);
+        if(key.which === 13){
+            // console.log('エンター');
+            console.log($(':focus'));
+
+            // ★listNumを取得★
+            
+
+            // 配列にタイトルを入れる
+            // var titleStr = $(this).text();
+            var titleStr = $(':focus').text();
+
+            // もしlistNumが−1だったら新規用のコードを書く
+            // それ以外は編集用にコードを書く
+            
+
+            // 新規用のコード
+            var checkStr = false;
+            var memoObj = {
+                title:titleStr,
+                check:checkStr     
+            }
+
+            arr.push(memoObj);
+            
+            // localStorageに保存
+            var arrStr =JSON.stringify(arr);
+
+            // localStrageのsetItemで保存する
+            localStorage.setItem('memoApp', arrStr);
 
         }
+        
 
         
-        // .memo-detailのテキストを取得する
-        // var newTitle = $('.memo-detail').val();
-        // console.log(newTitle);
         
-        // .memo-listに反映する
-        // $('.memo-list li a').text(newTitle);
-        // $('.memo-list li').eq(0).find('a').text(newTitle);
-        // $('.memo-list li').eq(listNum).find('a').text(newTitle);
-
     });
-
-    // 削除ボタンがクリックされたら
-    $('.delete-btn').on('click',function(){
-        // 何番目のリストが押されているか取得する（グローバル変数）
-        console.log('現在選択されている削除リストの番号は'+listNum);
-        
-        // listNumが-1（すでに削除されている状態）でないときのみ実行
-        if(listNum != -1){
-             // .memo-listから指定した番号のリストを削除する　.remove（);
-        $('.memo-list li').eq(listNum).remove();
-
-        // .memo-detailの内容を空白にする
-        $('.memo-detail').val('');
-
-        // listNumをリセットする
+    
+    // .plus_iconを押したら、<li>を出す
+    $('.plus_icon').on('click',function(){
+        // 新規
         listNum = -1;
 
-        }
+
+        
+        // var liTag = '<li contentEditable="true">'+''+'</li>';
+        var liTag = '<li>'+'<span class="btn"></span>'+
+        '<span class="title" contentEditable="true"></span>'+
+    '</li>';
+        // console.log('liTagを取得：'+liTag);
+        
+        // .task-listに追加
+        $('.task-list').append(liTag);
+    });
+
+    // ラジオボタンが押されたら円の背景をグレーにし、テキストに打ち消し線をつける
+    $('.task-list').on('click','li .btn',function(){
+        $(this).toggleClass('checked');
+        $(this).parent().find('.title').toggleClass('checked');
+    });
+
+    // ゴミ箱アイコンが押されたらtask-li li　を消す
+    // ここができない！！！！！！　(´；ω；`)
+    $('.trash_icon').on('click',function(){
+
+        // 全部のラジオボタンをチェックする each(繰り返し処理)
+        $('.task-list li').each(function(){
+            var btnTag = $(this).find('.btn');
+            console.log(btnTag);
+
+            if(btnTag.hasClass('checked')){
+                // checkedというクラスを持っていたらli（this）を消す。
+                $(this).remove();
+            }   
+        });
+
 
     });
 
+    // .dateにメモ帳を開いた日付を表示させる
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth() + 1;
+    var d = now.getDate();
+    // now.getDay 曜日を0から6の整数で取得する
+    var w = now.getDay();
+    var wd = ['日', '月', '火', '水', '木', '金', '土'];
+    var h = now.getHours();
+    var mi = now.getMinutes();
+    var s = now.getSeconds();
+
+    $('.date').text(y + '/' + m + '/' + d + '(' + wd[w] + ')');  
+
+
+    // APIを読み込んで背景のグラデーションを変える
+        $.ajax(
+            {
+                url:'http://api.openweathermap.org/data/2.5/weather?id=1850147&APPID=f95f45f631c940ee86ef81e2e1608a8b&units=metric'
+                ,type:'GET'
+                ,dataType:'JSON'
+                        }
+            ).then(showData, showError);
 
 });
 
-// 省略形↓
-// $(function(){
 
-// });
+// 関数の呼び出し　ajax通信が成功した場合
+function showData(data){
+    // 天気アイコンを連続表示させないため
+    $('.weather_icon').empty();
 
+    var main = data.weather[0].main;
+
+    if(main == 'Clear'){
+        // 晴れだったら
+        $('.bg').addClass('bg_gra_clear');
+        // オリジナルアイコンを表示
+        var imgTag = '<img src="images/icon_sunny.svg">';
+        $('.weather_icon').append(imgTag);
+
+    } else if(main == 'Clouds') {
+        // 曇り
+        $('.bg').addClass('bg_gra_cloud');
+        // オリジナルアイコンを表示
+        var imgTag = '<img src="images/icon_cloud.svg">';
+        $('.weather_icon').append(imgTag);
+
+    } else if(main == 'Rain') {
+        // 雨
+        $('.bg').addClass('bg_gra_rain');
+        // オリジナルアイコンを表示
+        var imgTag = '<img src="images/icon_rain.svg">';
+        $('.weather_icon').append(imgTag);
+
+    } else {
+        // 雪
+        $('.bg').addClass('bg_gra_snow');
+        // オリジナルアイコンを表示
+        var imgTag = '<img src="images/icon_rain.svg">';
+        $('.weather_icon').append(imgTag);
+    }
+
+    console.log(data);
+    
+    // 気温を表示させる
+    $('.temp').append(data.main.temp+'℃');
+
+
+}
+
+
+
+// 関数の呼び出し　ajax通信が失敗した場合
+function showError(){
+    console.log('失敗しました');
+}
+
+// リストを表示する
+function loadList(){
+      // ロードされた時にリストを再現する
+    // 1. localStrageから値をロードする
+    var arrStr = localStorage.getItem('memoApp');
+
+    // 2.もし値が何もなければ処理を終える
+    if(arrStr === null){
+        return;
+    }
+
+    // 3. localStrageの値をarrに保存する
+    arr = JSON.parse(arrStr);
+
+    // 4. arrの値をliに表示する
+    for(var i=0; i<arr.length; i++){
+        var titleStr = arr[i].title; 
+        var liTag = '<li>'+'<span class="btn"></span>'+
+        '<span class="title" contentEditable="true">'+titleStr+'</span>'+
+    '</li>';
+        
+        // .task-listに追加
+        $('.task-list').append(liTag);
+
+
+    }
+
+}

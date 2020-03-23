@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholder</title>
+    <style>
+        /* ラジオボタン */
+        li .btn {
+            content: '';
+            border: 1px solid;
+            border-radius: 5px;
+            width: 25px;
+            height: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        /* タイトル */
+        li .title {
+            display: inline-block;
+            width: 100%;
+        }
+
+        li{
+            width: 200px;
+            border: 1px solid black;
+        }
+        .btn.checked {
+            background-color: gray;
+        }
+
+        .title.checked {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function(){
+            $('.add-btn').on('click', function(){
+                var liTag = '<li>'+
+                                '<span class="btn"></span>'+
+                                '<span class="title" contentEditable="true"></span>'+
+                            '</li>';
+                $('.memo-list').append(liTag);
+            }); 
+
+            // ラジオボタンがおされたら
+            $('.memo-list').on('click', 'li .btn', function(){
+                console.log('click');
+                // ラジオボタン
+                $(this).addClass('checked');
+                // テキスト
+                $(this).parent().find('.title').addClass('checked');
+                
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <button class="add-btn">追加</button>
+    <br>
+    <ul class="memo-list">
+
+    </ul>
+    
+</body>
+</html>
