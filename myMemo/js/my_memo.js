@@ -81,7 +81,6 @@ $(function(){
     });
 
     // ゴミ箱アイコンが押されたらtask-li li　を消す
-    // ここができない！！！！！！　(´；ω；`)
     $('.trash_icon').on('click',function(){
 
         // 全部のラジオボタンをチェックする each(繰り返し処理)
@@ -94,40 +93,38 @@ $(function(){
                 $(this).remove();
             }   
         });
-
-
     });
 
     // .dateにメモ帳を開いた日付を表示させる
-    var now = new Date();
-    var y = now.getFullYear();
-    var m = now.getMonth() + 1;
-    var d = now.getDate();
-    // now.getDay 曜日を0から6の整数で取得する
-    var w = now.getDay();
-    var wd = ['日', '月', '火', '水', '木', '金', '土'];
-    var h = now.getHours();
-    var mi = now.getMinutes();
-    var s = now.getSeconds();
+        var now = new Date();
+        var y = now.getFullYear();
+        var m = now.getMonth() + 1;
+        var d = now.getDate();
+        // now.getDay 曜日を0から6の整数で取得する
+        var w = now.getDay();
+        var wd = ['日', '月', '火', '水', '木', '金', '土'];
+        var h = now.getHours();
+        var mi = now.getMinutes();
+        var s = now.getSeconds();
 
-    $('.date').text(y + '/' + m + '/' + d + '(' + wd[w] + ')');  
+        $('.date').text(y + '/' + m + '/' + d + '(' + wd[w] + ')');  
 
 
-    // APIを読み込んで背景のグラデーションを変える
+    // APIを読み込んで背景のグラデーションを天気ごとに変える
         $.ajax(
             {
                 url:'http://api.openweathermap.org/data/2.5/weather?id=1850147&APPID=f95f45f631c940ee86ef81e2e1608a8b&units=metric'
                 ,type:'GET'
                 ,dataType:'JSON'
-                        }
+            }
             ).then(showData, showError);
-
 });
+
 
 
 // 関数の呼び出し　ajax通信が成功した場合
 function showData(data){
-    // 天気アイコンを連続表示させないため
+    // 天気アイコンを連続表示させないための処理
     $('.weather_icon').empty();
 
     var main = data.weather[0].main;
@@ -157,15 +154,24 @@ function showData(data){
         // 雪
         $('.bg').addClass('bg_gra_snow');
         // オリジナルアイコンを表示
-        var imgTag = '<img src="images/icon_rain.svg">';
+        var imgTag = '<img src="images/icon_snow.svg">';
         $('.weather_icon').append(imgTag);
     }
 
     console.log(data);
     
-    // 気温を表示させる
-    $('.temp').append(data.main.temp+'℃');
+    // APIから取得した気温を表示させる
+    // $('.temp').append(data.main.temp+'℃');
 
+    // 気温を四捨五入させたい
+    var tempData = data.main.temp;
+
+    // 四捨五入した気温
+    // var finalTempData = Math.round(tempData);
+    tempData = Math.round(tempData);
+
+    // HTMLに表示
+    $('.temp').append(tempData+'℃');
 
 }
 
