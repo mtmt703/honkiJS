@@ -113,7 +113,7 @@ $(function(){
     // APIを読み込んで背景のグラデーションを天気ごとに変える
         $.ajax(
             {
-                url:'http://api.openweathermap.org/data/2.5/weather?id=1850147&APPID=f95f45f631c940ee86ef81e2e1608a8b&units=metric'
+                url:'https://api.openweathermap.org/data/2.5/weather?id=1850147&APPID=f95f45f631c940ee86ef81e2e1608a8b&units=metric'
                 ,type:'GET'
                 ,dataType:'JSON'
             }
