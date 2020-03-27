@@ -1,4 +1,4 @@
-// グローバル変数はここに書くほうが◎
+// グローバル変数はここに書くほうが◎ $(function()の中じゃなくてOK
 var listNum = -1;
 var arr =[];
 
@@ -6,13 +6,25 @@ $(function(){
     loadList();
 
     // .titleにフォーカスがあたったら　イベントを書く
-
         // フォーカスがあたっている.titleが空白であれば新規
         // listNum = -1;
 
         // それ以外は編集
         // listNum = フォーカスがあたっているリストの番号
-
+    
+        // 「documentの中の'.task-list li .title'にfocusされたら」という意味
+        $(document).on('focus', '.task-list li .title', function () {
+            // テキスト取得
+            var value = $(this).text();
+    
+            if(value){
+                console.log(value);
+            } else {
+                console.log('から');
+            }
+    
+        });  
+        
 
 
     // エンターキーが押されたらテキストを保存する
@@ -35,7 +47,8 @@ $(function(){
             // それ以外は編集用にコードを書く
             
 
-            // 新規用のコード
+            // 新規用のコード 
+            // false=「データがない」という意味
             var checkStr = false;
             var memoObj = {
                 title:titleStr,
@@ -49,11 +62,7 @@ $(function(){
 
             // localStrageのsetItemで保存する
             localStorage.setItem('memoApp', arrStr);
-
-        }
-        
-
-        
+        }     
         
     });
     
@@ -61,9 +70,7 @@ $(function(){
     $('.plus_icon').on('click',function(){
         // 新規
         listNum = -1;
-
-
-        
+     
         // var liTag = '<li contentEditable="true">'+''+'</li>';
         var liTag = '<li>'+'<span class="btn"></span>'+
         '<span class="title" contentEditable="true"></span>'+
@@ -121,10 +128,10 @@ $(function(){
 });
 
 
-
 // 関数の呼び出し　ajax通信が成功した場合
+// 引数のdataは、data.weather[0].main;のdata
 function showData(data){
-    // 天気アイコンを連続表示させないための処理
+    // 天気アイコンを連続表示させないための処理empty
     $('.weather_icon').empty();
 
     var main = data.weather[0].main;
@@ -172,7 +179,6 @@ function showData(data){
 
     // HTMLに表示
     $('.temp').append(tempData+'℃');
-
 }
 
 
@@ -205,8 +211,5 @@ function loadList(){
         
         // .task-listに追加
         $('.task-list').append(liTag);
-
-
     }
-
 }
