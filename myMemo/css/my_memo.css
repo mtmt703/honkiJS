@@ -1,6 +1,8 @@
-/* スマホサイズ */
-@media screen and (max-width: 480px){
+@charset "utf-8";
 
+/* スマホサイズ 
+------------------------------------------------------------*/
+@media screen and (max-width: 480px){
     html{
         /* ルートのフォントサイズを10pxに設定しておく */
         font-size: 62.5%;
@@ -164,11 +166,13 @@
     }
 }
 
-/* タブレット以上 */
+/* タブレット以上 
+------------------------------------------------------------*/
 @media screen and (min-width: 769px) {
     html{
         max-width: 100%;
         height: 100%;
+        box-sizing: border-box;
     }
 
     .bg_gra_clear{
@@ -245,7 +249,7 @@
     .task-list{
         /* position: relative; */
         font-size: 1.6rem;
-        margin: 0 0 5.6rem 0;
+        margin: 0 0 7.2rem 0;
     }
 
     .task-list li{
