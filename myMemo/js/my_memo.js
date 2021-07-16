@@ -161,6 +161,7 @@ $(function(){
                 ,dataType:'JSON'
             }
             ).then(showData, showError);
+
 });
 
 
@@ -269,4 +270,24 @@ function loadList(){
         $('.task-list').append(liTag);
     }
 }
+
+// タブの切り替え
+$(function(){
+
+    $('.tab li').on('click',function(){
+        let index = $('.tab li').index(this);
+        console.log(index);
+
+        $('.tab li').removeClass('active');
+        $(this).addClass('active');
+
+        $('.task_area ul').removeClass('show');
+        $('.task_area ul').eq(index).addClass('show');
+
+
+
+    });
+
+
+});
 

@@ -68,9 +68,11 @@
         padding: 0 2.5rem 1.1rem 2.5rem;
     }
 
-    .tab li:first-child{
+    /* .tab li:first-child{
         border-bottom: 2px solid #707070;
-        /* margin-right: 40px; */
+    } */
+    .tab li.active{
+        border-bottom: 2px solid #707070;
     }
     
     .memo_box{
@@ -228,9 +230,11 @@
         padding: 0 2.5rem 1.1rem 2.5rem;
     }
 
-    .tab li:first-child{
+    /* .tab li:first-child{
         border-bottom: 2px solid #707070;
-        /* margin-right: 40px; */
+    } */
+    .tab li.active{
+        border-bottom: 2px solid #707070;
     }
     
     .memo_box{
@@ -296,9 +300,9 @@
    footer{
        font-size: 1.1rem;
        text-align: right;
-       position: relative;
-       bottom: 0; /*下に固定*/
-       right: 0;
+       position: absolute;
+       bottom: 8%;
+       right: 4%;
        /* margin: 0 3.2rem 3.4rem 0; */
     }
 
